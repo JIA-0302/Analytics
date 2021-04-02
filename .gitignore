@@ -1,0 +1,10 @@
+# Build files
+/__pycache__
+
+# Dependencies
+venv/
+
+# Env Variables
+.env
+
+**/**.csv
