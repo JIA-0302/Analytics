@@ -17,6 +17,11 @@ def index():
 
 @app.route('/predict-tips', methods=["POST"])
 def predict_tips():
+    # Validate the access token
+    authorization = request.headers.get('Authorization', None)
+    if authorization is None or authorization.split(' ')[1] != os.environ.get('ACCESS_TOKEN'):
+        return {'error': 'Please provide a valid access token'}, 400
+
     # Retrieve the request body
     req_body = request.get_json()
     if req_body is None:
