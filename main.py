@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'See <a href="https://github.com/JIA-0302/TipTracker/tree/main/ml/README.md">documentation</a> for usage'
+    return 'See <a href="https://github.com/JIA-0302/Analytics/blob/master/README.md">documentation</a> for usage'
 
 
 @app.route('/predict-tips', methods=["POST"])
