@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD
+
+on:
+  push:
+    branches: [ master ]  
+  
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Environment Variables
+        uses: ikuanyshbekov/app-yaml-env-compiler@v1.0
+        env:
+          MY_ENV_VAR1: ${{ secrets.MY_ENV_VAR1 }}
+          MY_ENV_VAR2: ${{ secrets.MY_ENV_VAR2 }}
+
+      - name: Setup SDK
+        uses: google-github-actions/deploy-appengine@main
+        with:
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          project: ${{ secrets.GCP_PROJECT }}
+          
+      - name: Deploy to APP Engine
+        run: gcloud app deploy --quiet
