@@ -5,10 +5,15 @@ import os
 from util import parse_request_body, DatasetError
 from predictor import Predictor
 
-# Loads the environment variables from .env file for development 
-load_dotenv()
+# Loads the environment variables from .env file for development
+env_file = '.env'
+if os.environ.get('FLASK_ENV') == 'production':
+    env_file = '.env.production'
+
+load_dotenv(dotenv_path=env_file)
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():

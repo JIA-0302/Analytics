@@ -5,6 +5,7 @@
 venv/
 
 # Env Variables
-.env
+.env*
+!.env.example
 
 **/**.csv
