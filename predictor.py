@@ -69,8 +69,8 @@ class Predictor:
 
             db = FutureTrendsDatabase()
             data = db.get_future_trends_by_filter({"user_id": self.user_id})
-
             self._dataset = pd.DataFrame(data)
+
             self.validate_dataset()
 
         return self._dataset
@@ -82,7 +82,19 @@ class Predictor:
             - Process the input values for the ML model to make predictions on
             - Store the result for each day in dictionary
         """
-        dataset = self.get_dataset()
+        try:
+            dataset = self.get_dataset()
+        except DatasetError as err:
+            result = {}
+            for date in self.search_dates:
+                shift_date = date.strftime('%Y-%m-%d')
+                result[shift_date] = None
+                continue
+
+            return {
+                "result": result
+            }
+
         model = Regressor(dataset=dataset)
 
         weekday_count = dataset.day_of_week.value_counts().to_dict()
