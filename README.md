@@ -124,7 +124,7 @@ No addition steps are required for installation.
 
 Simply run the following command to start the server:
 ```
-python index.py
+python main.py
 ```
 
 The terminal will return the URL on where the application is running. By default, it runs on `http://127.0.0.1:5000/`.
