@@ -1,0 +1,14 @@
+.gcloudignore
+
+# Git stuff
+.git
+.gitignore
+
+# Python dependencies
+venv/
+
+# Python pycache:
+**/__pycache__/
+
+# Ignored by the build system
+/setup.cfg
