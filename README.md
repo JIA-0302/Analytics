@@ -3,14 +3,14 @@ This repository contains the Machine Learning model that is used by [TipTracker]
 # Release Notes
 >  ## v1.0.1 (03/12/2021)
 >   - A script was added to generate datasets.
->   - Performance metrics for various Machine Learning algorithms has been compiled for comparisions.
->  - The Machine Learning algorithm was developed to make predictions for a given dataset.
+>   - Performance metrics for various Machine Learning algorithms have been compiled for comparisons.
+>   - The Machine Learning algorithm was developed to make predictions for a given dataset.
 >
 >  ## v1.0.2 (04/02/2021)
 >  - A Flask Application was created to access the Machine Learning algorithm to make predictions.
->  - MongoDB has been integrated to load the dataset for user.
+>  - MongoDB has been integrated to load the dataset for users.
 >  - Rest API has been developed to allow requesting shift predictions for a given user.
->  - Access token has been added on the API routes to prevent unauthorized access of the resources.
+>  - An access token has been added on the API routes to prevent unauthorized access to the resources.
 > 
 > ## v.1.0.3 (04/23/2021)
 >   - CI/CD for the application has been configured to automatically deploy new changes on the source code.
@@ -40,7 +40,7 @@ The following tools, software, and technologies are needed to run the applicatio
 
    We are using `MongoDB` to store data for our Machine Learning model.
    
-   If you do not have a MongoDB database, MongoDB provides free cloud database service [here](https://www.mongodb.com/cloud/atlas/signup).
+   If you do not have a MongoDB database, MongoDB provides a free cloud database service [here](https://www.mongodb.com/cloud/atlas/signup). This is hosted remotely, so no additional download is required.
 
 <br />
 
@@ -62,7 +62,7 @@ The source code can be downloaded any one of the steps:
 <br />
 
 
-## Installing dependent libraries
+## Installing Dependent Libraries
 
 
 1. Setup virtual environment
@@ -80,9 +80,9 @@ The source code can be downloaded any one of the steps:
     . venv/Scripts/activate
     ```
 
-    This allows us manage and resolve dependenices easily
+    This allows us to manage and resolve dependencies easily.
 
-2. Install dependencies:
+2. Install dependencies
 
     To install all the required dependencies, run the following command:
     ```
@@ -91,7 +91,7 @@ The source code can be downloaded any one of the steps:
 
 <br />
 
-## Build instructions
+## Build Instructions
 
 1. Setup environment variables
 
@@ -113,12 +113,12 @@ The source code can be downloaded any one of the steps:
     SHIFT_END_TIME = 23
     ```
 
-    You can use any value for access token. However, make sure any other application making an request to this service uses the same access token.
+    You can use any value for an access token. However, make sure any other application making a request to this service uses the same access token.
 
 
 ## Installation
 
-No addition steps are required for installation.
+No additional steps are required for installation.
 
 ## Run Instructions
 
@@ -153,7 +153,7 @@ If other applications need to use this service, use the provided URL.
 
       - Run the application on a different port
 
-        To run application in a different unoccupied port, run the following command:
+        To run the application in a different unoccupied port, run the following command:
         ```
         $ flask run -h localhost -p <PORT_NUMBER>
         ```
@@ -161,7 +161,7 @@ If other applications need to use this service, use the provided URL.
 
 # Developers Guide
 
-Please see the [installation guide](#install-guide) to setup the project.
+Please see the [installation guide](#install-guide) to set up the project.
 
 ## Utils
 ### Generating Test Dataset
@@ -199,7 +199,7 @@ We are using Google Colab as a playground. Use TipTracker account to access it [
 ## API Usage
 These API endpoints are protected and only authorized apps are allowed access based on the token issued.
 
-Access token must be added using Bearer authentication.
+The access token must be added using Bearer authentication.
 ```
 $ curl https://service-url/api/...
     -H "Authorization: Bearer ${access_token}" 
@@ -229,7 +229,7 @@ Example Request Body:
 }
 ```
 
-If the request is successful, it returns the predicted values in a dictionary in following scheme:
+If the request is successful, it returns the predicted values in a dictionary in the following scheme:
 ```
 {
     // Each day represents the date passed in the request
@@ -288,7 +288,7 @@ Example Response:
 }
 ```
 
-If there are any errors, the response will contain a description about the error. An example error response is:
+If there are any errors, the response will contain a description of the error. An example error response is:
 ```
 {
     "error": "We do not have sufficient data to make accurate predictions. Please continue entering shift data."
